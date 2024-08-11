@@ -1,6 +1,7 @@
 package com.sky.controller.admin;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 import com.sky.properties.JwtProperties;
@@ -68,6 +69,17 @@ public class EmployeeController {
      */
     @PostMapping("/logout")
     public Result<String> logout() {
+        return Result.success();
+    }
+
+    /*
+    新增员工
+     */
+    //post方法接受数据，使用RequestBody解析前端传来的json格式，用dto接受，然后实现类再把dto】没有的数据set上，new 实体类来赋值，并把实体类的值传给mapper，也就是插入进数据库
+   //post用requestbody，get值在url而非响应体里，用requestparam来接收。备注：响应头穿格式信息，比如json，代表响应体是以json形式来传输
+    @PostMapping
+    public Result save(@RequestBody  EmployeeDTO employeeDTO){
+        employeeService.save(employeeDTO);
         return Result.success();
     }
 
