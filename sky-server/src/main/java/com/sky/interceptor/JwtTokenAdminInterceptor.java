@@ -39,10 +39,10 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        //1、从请求头中获取令牌
+//        1、从请求头中获取令牌
         String token = request.getHeader(jwtProperties.getAdminTokenName());
 
-        //2、校验令牌
+//        2、校验令牌
         try {
             log.info("jwt校验:{}", token);
             Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
@@ -56,5 +56,9 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;
         }
+//        return true;
     }
+
 }
+
+
